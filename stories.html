@@ -12,13 +12,13 @@
   </style>
 </head>
 <body>
-  <header class="top wrap"><a class="brand" href="index.html"><span class="mark">IS</span><span>Inspire Stars<br>Academy</span></a><a class="back" href="index.html">← Back to academy</a></header>
+  <header class="top wrap"><a class="brand" href="/"><span class="mark">IS</span><span>Inspire Stars<br>Academy</span></a><a class="back" href="/">← Back to academy</a></header>
   <main class="wrap"><section class="intro"><p class="kicker">From the academy</p><h1>Stories worth sharing.</h1><p>Training days, community moments and the people helping young athletes find their next opportunity.</p></section><section class="stories" id="stories" aria-label="Published stories"></section></main>
   <script>
     const seed=[{title:'Building confidence beyond the pitch',category:'Player spotlight',date:'2026-08-22',excerpt:'The habits that help young athletes grow every day.',image:'images/gal-20.jpg'},{title:'A new season of possibilities',category:'Academy news',date:'2026-08-09',excerpt:'Training, community and international pathways for the season ahead.',image:'images/gal-06.jpg'}];
     const saved=JSON.parse(localStorage.getItem('isa-editorial-stories-v1')||'null'); const stories=(saved||seed).filter(s=>!saved||s.status==='published');
     const formatDate=value=>new Intl.DateTimeFormat('en',{month:'long',day:'numeric',year:'numeric'}).format(new Date(value+'T12:00:00'));
-    document.getElementById('stories').innerHTML=stories.length?stories.map(s=>`<article class="story"><img src="${s.image||'images/hero.jpg'}" alt=""><div class="story-body"><span class="category">${s.category}</span><h2>${s.title}</h2><p>${s.excerpt||''}</p><div class="date">${formatDate(s.date)}</div><a class="back" href="story.html?id=${encodeURIComponent(s.slug||s.id)}">Read story ↗</a></div></article>`).join(''):'<div class="empty">New stories are on their way.</div>';
+    document.getElementById('stories').innerHTML=stories.length?stories.map(s=>`<article class="story"><img src="${s.image||'images/hero.jpg'}" alt=""><div class="story-body"><span class="category">${s.category}</span><h2>${s.title}</h2><p>${s.excerpt||''}</p><div class="date">${formatDate(s.date)}</div><a class="back" href="/story?id=${encodeURIComponent(s.slug||s.id)}">Read story ↗</a></div></article>`).join(''):'<div class="empty">New stories are on their way.</div>';
   </script>
 </body>
 </html>
