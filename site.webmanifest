@@ -1,0 +1,25 @@
+{
+  "name": "Inspire Stars Academy Rwanda",
+  "short_name": "Inspire Stars",
+  "description": "A professional youth sports academy in Kigali, Rwanda — developing talent, building character, creating opportunities.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FBF6EE",
+  "theme_color": "#1B2D52",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Netlify configuration for the Inspire Stars Academy site.
+#
+# There is no build step — the site is plain HTML. If you drag-and-drop
+# the folder into Netlify, this file is picked up automatically. If you
+# connect a Git repository, leave the build command empty and set the
+# publish directory to the folder containing index.html.
+
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+# Never cache the HTML — otherwise content edits won't reach visitors.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Media is versioned by filename, so it can be cached for a year.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

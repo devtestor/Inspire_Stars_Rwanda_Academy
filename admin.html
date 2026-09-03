@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editorial desk | Inspire Stars Academy</title>
+  <meta name="theme-color" content="#163b59" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #193044;
+      --muted: #71808a;
+      --line: #dfe5e5;
+      --paper: #fbfcfa;
+      --panel: #fff;
+      --green: #174d43;
+      --mint: #e5f0ec;
+      --orange: #e87c42;
+      --orange-soft: #fff0e8;
+      --gold: #eabf52;
+      --shadow: 0 14px 40px rgba(25, 48, 68, .08);
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --display: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 14px/1.55 var(--sans); }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .app { display: grid; grid-template-columns: 248px 1fr; min-height: 100vh; }
+    .sidebar { background: var(--green); color: #d9e7df; padding: 28px 18px; display: flex; flex-direction: column; }
+    .brand { color: #fff; display: flex; align-items: center; gap: 12px; margin: 0 12px 52px; }
+    .brand-mark { width: 34px; height: 34px; border: 2px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: var(--gold); }
+    .brand strong { font-size: 12px; letter-spacing: .07em; text-transform: uppercase; line-height: 1.15; }
+    .eyebrow { font: 11px var(--mono); letter-spacing: .13em; text-transform: uppercase; color: #9db7aa; margin: 0 12px 12px; }
+    .nav { display: grid; gap: 5px; }
+    .nav button { border: 0; background: transparent; color: #c5d9d0; text-align: left; border-radius: 7px; padding: 12px; display: flex; align-items: center; gap: 12px; }
+    .nav button:hover, .nav button.active { color: #fff; background: rgba(255,255,255,.12); }
+    .nav-icon { width: 20px; text-align: center; font-size: 16px; opacity: .9; }
+    .sidebar-foot { margin-top: auto; border-top: 1px solid rgba(255,255,255,.16); padding: 20px 12px 0; color: #aac4b7; font-size: 12px; }
+    .admin-user { display: flex; align-items: center; gap: 9px; margin-top: 13px; color: #fff; }
+    .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--green); display: grid; place-items: center; font-weight: 700; }
+    main { min-width: 0; }
+    .topbar { height: 76px; padding: 0 42px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.75); }
+    .crumb { color: var(--muted); font-size: 13px; }
+    .crumb b { color: var(--ink); font-weight: 600; }
+    .top-actions { display: flex; align-items: center; gap: 17px; }
+    .site-link { color: var(--green); font-size: 13px; font-weight: 600; }
+    .notification { border: 0; background: transparent; color: var(--muted); font-size: 18px; }
+    .content { padding: 42px; max-width: 1440px; }
+    .page-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 32px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 700 clamp(30px, 4vw, 46px)/1.1 var(--display); margin-bottom: 9px; color: var(--ink); }
+    .subtitle { margin: 0; color: var(--muted); }
+    .button { border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 10px 15px; border-radius: 5px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+    .button:hover { border-color: var(--green); }
+    .button.primary { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .button.primary:hover { background: #d76d35; }
+    .button.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; }
+    .metric { background: var(--panel); border: 1px solid var(--line); padding: 20px 21px; border-radius: 7px; }
+    .metric-label { color: var(--muted); font-size: 12px; }
+    .metric-value { display: block; font: 700 29px var(--display); margin: 7px 0 1px; }
+    .metric-note { font-size: 11px; color: var(--green); }
+    .workspace { display: grid; grid-template-columns: minmax(0, 1.48fr) minmax(300px, .72fr); gap: 26px; align-items: start; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+    h2 { font-size: 18px; margin: 0; }
+    .section-title span { color: var(--muted); font-size: 12px; }
+    .post-list { display: grid; gap: 10px; }
+    .post { display: grid; grid-template-columns: 68px 1fr auto; gap: 15px; align-items: center; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 6px; transition: box-shadow .2s, border-color .2s; }
+    .post:hover, .post.selected { border-color: #b6cbc3; box-shadow: var(--shadow); }
+    .post-image { width: 68px; height: 58px; object-fit: cover; border-radius: 4px; background: var(--mint); }
+    .post-title { font-weight: 700; margin-bottom: 3px; }
+    .post-meta { color: var(--muted); font-size: 11px; }
+    .status { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; }
+    .status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .status.published { color: var(--green); }
+    .status.draft { color: var(--orange); }
+    .post-actions { display: flex; align-items: center; gap: 5px; }
+    .icon-button { border: 0; background: transparent; color: var(--muted); font-size: 16px; padding: 7px; border-radius: 4px; }
+    .icon-button:hover { background: var(--mint); color: var(--green); }
+    .editor { background: #fff; border: 1px solid var(--line); border-radius: 7px; padding: 24px; box-shadow: 0 4px 20px rgba(25,48,68,.03); }
+    .editor-head { display: flex; justify-content: space-between; align-items: start; margin-bottom: 23px; }
+    .editor-head h2 { font-family: var(--display); font-size: 24px; }
+    .autosave { color: var(--muted); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+    label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 7px; }
+    input, textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 4px; padding: 11px 12px; color: var(--ink); background: #fdfefd; outline: none; }
+    input:focus, textarea:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(23,77,67,.1); }
+    .field { margin-bottom: 17px; }
+    textarea { min-height: 220px; resize: vertical; line-height: 1.7; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .toolbar { border: 1px solid var(--line); border-bottom: 0; display: flex; gap: 2px; padding: 6px; border-radius: 4px 4px 0 0; background: #f5f8f6; }
+    .toolbar button { border: 0; background: transparent; padding: 6px 9px; color: var(--muted); font-weight: 700; }
+    .toolbar button:hover { background: #fff; color: var(--green); }
+    .toolbar + textarea { border-radius: 0 0 4px 4px; }
+    .media-drop { border: 1px dashed #aac3b9; background: #f6faf7; border-radius: 5px; min-height: 142px; padding: 14px; display: grid; place-items: center; text-align: center; position: relative; overflow: hidden; }
+    .media-drop.has-image { padding: 0; min-height: 190px; }
+    .media-drop img { width: 100%; height: 190px; object-fit: cover; }
+    .drop-copy { color: var(--muted); font-size: 12px; }
+    .drop-copy strong { display: block; color: var(--green); font-size: 13px; margin-bottom: 4px; }
+    .upload-button { margin-top: 10px; color: var(--green); background: #fff; border: 1px solid #cbdcd4; border-radius: 4px; padding: 7px 10px; font-weight: 600; }
+    .media-drop input { display: none; }
+    .editor-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; }
+    .footer-actions { display: flex; gap: 8px; }
+    .preview { background: var(--green); color: #fff; border-radius: 7px; padding: 25px; }
+    .preview h2 { color: #fff; font-family: var(--display); font-size: 20px; margin-bottom: 7px; }
+    .preview p { color: #c4d8d0; font-size: 12px; }
+    .preview-link { color: var(--gold); font-size: 12px; font-weight: 700; }
+    .search-row { display: flex; gap: 8px; margin-bottom: 13px; }
+    .search-row input { flex: 1; }
+    .search-row select { width: 124px; }
+    .empty { color: var(--muted); border: 1px dashed var(--line); padding: 30px; text-align: center; border-radius: 6px; }
+    .toast { position: fixed; right: 25px; bottom: 25px; background: var(--ink); color: white; padding: 12px 17px; border-radius: 5px; box-shadow: var(--shadow); transform: translateY(80px); opacity: 0; transition: .25s; pointer-events: none; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    @media (max-width: 1050px) { .app { grid-template-columns: 205px 1fr; } .topbar, .content { padding-left: 27px; padding-right: 27px; } .workspace { grid-template-columns: 1fr; } .preview { display: none; } }
+    @media (max-width: 700px) { .app { display: block; } .sidebar { padding: 15px; } .brand { margin: 0 7px 14px; } .eyebrow, .sidebar-foot { display: none; } .nav { display: flex; overflow-x: auto; } .nav button { white-space: nowrap; padding: 8px 10px; } .topbar { height: 62px; padding: 0 17px; } .site-link { display: none; } .content { padding: 27px 17px; } .page-head { display: block; } .page-head .button { margin-top: 17px; } .metrics { grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 27px; } .metric { padding: 14px; } .metric-value { font-size: 25px; } .editor { padding: 17px; } .post { grid-template-columns: 56px 1fr auto; gap: 9px; } .post-image { width: 56px; height: 52px; } .post-actions .edit-action { display: none; } .two-col { grid-template-columns: 1fr; gap: 0; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">IS</span><strong>Inspire Stars<br>Academy</strong></a>
+      <p class="eyebrow">Workspace</p>
+      <nav class="nav" aria-label="Admin navigation">
+        <button class="active" type="button"><span class="nav-icon">▤</span>Editorial</button>
+        <button type="button" data-coming="Media library"><span class="nav-icon">▧</span>Media library</button>
+        <button type="button" data-coming="Site settings"><span class="nav-icon">⚙</span>Site settings</button>
+      </nav>
+      <div class="sidebar-foot">Publishing desk<div class="admin-user"><span class="avatar">NR</span><span>Nzeye Rodrigue</span></div></div>
+    </aside>
+    <main>
+      <header class="topbar"><div class="crumb">Workspace / <b>Editorial</b></div><div class="top-actions"><a class="site-link" href="index.html">View public site ↗</a><button class="notification" title="Notifications" type="button">♢</button></div></header>
+      <div class="content">
+        <div class="page-head"><div><h1>Editorial desk</h1><p class="subtitle">Shape the stories, updates and moments your community sees.</p></div><button class="button primary" id="new-post" type="button"><span>＋</span> New story</button></div>
+        <section class="metrics" aria-label="Content summary">
+          <div class="metric"><span class="metric-label">Published stories</span><strong class="metric-value" id="published-count">0</strong><span class="metric-note">Live on your site</span></div>
+          <div class="metric"><span class="metric-label">Drafts</span><strong class="metric-value" id="draft-count">0</strong><span class="metric-note">Ready for review</span></div>
+          <div class="metric"><span class="metric-label">This month</span><strong class="metric-value" id="month-count">0</strong><span class="metric-note">Stories published</span></div>
+          <div class="metric"><span class="metric-label">Media used</span><strong class="metric-value" id="media-count">0</strong><span class="metric-note">Images in stories</span></div>
+        </section>
+        <div class="workspace">
+          <section><div class="section-title"><h2>All stories</h2><span id="story-count"></span></div><div class="search-row"><input id="search" type="search" placeholder="Search stories" aria-label="Search stories"><select id="filter" aria-label="Filter stories"><option value="all">All status</option><option value="published">Published</option><option value="draft">Drafts</option></select></div><div class="post-list" id="post-list"></div></section>
+          <section class="editor" aria-label="Story editor"><div class="editor-head"><div><h2 id="editor-heading">Create a story</h2><span class="autosave" id="autosave">New draft</span></div><button class="button ghost" id="clear-post" type="button">Clear</button></div>
+            <form id="editor-form">
+              <input id="post-id" type="hidden">
+              <div class="field"><label for="title">Story title</label><input id="title" required placeholder="Give your story a clear headline"></div>
+              <div class="field"><label for="slug">Public URL slug</label><input id="slug" placeholder="your-story-title"><small style="color:var(--muted);font-size:11px">stories.html?id=your-story-title</small></div>
+              <div class="two-col"><div class="field"><label for="category">Category</label><select id="category"><option>Academy news</option><option>Player spotlight</option><option>Community</option><option>Events</option><option>Pathways</option></select></div><div class="field"><label for="date">Publish date</label><input id="date" type="date"></div></div>
+              <div class="field"><label>Cover image</label><div class="media-drop" id="media-drop"><div class="drop-copy"><strong>Choose a cover image</strong>JPG, PNG or WEBP · shown on story cards<br><button class="upload-button" id="upload-trigger" type="button">Browse files</button></div><input id="image-input" type="file" accept="image/jpeg,image/png,image/webp"></div></div>
+              <div class="field"><label for="excerpt">Short description</label><textarea id="excerpt" rows="3" style="min-height:92px" placeholder="A short introduction for story cards and search results"></textarea></div>
+              <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);margin:0 0 17px"><input id="featured" type="checkbox" style="width:auto;accent-color:var(--orange)"> Feature this story on the public page</label>
+              <div class="field"><label for="body">Story content</label><div class="toolbar" aria-label="Formatting"><button type="button" data-format="bold"><b>B</b></button><button type="button" data-format="italic"><i>I</i></button><button type="button" data-format="heading">H2</button><button type="button" data-format="list">☷</button></div><textarea id="body" placeholder="Write the story here..."></textarea></div>
+              <div class="editor-footer"><span class="autosave" id="word-count">0 words</span><div class="footer-actions"><button class="button" id="save-draft" type="button">Save draft</button><button class="button primary" type="submit">Publish story</button></div></div>
+            </form>
+          </section>
+          <aside class="preview"><h2>Keep the story close to the work.</h2><p>Share the progress behind every athlete, the people who make it possible, and the next opportunity ahead.</p><a class="preview-link" href="stories.html">Browse academy stories ↗</a></aside>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script>
+    const seed = [
+      { id: 'seed-1', title: 'Building confidence beyond the pitch', slug: 'building-confidence-beyond-the-pitch', category: 'Player spotlight', date: '2026-08-22', status: 'published', featured: true, excerpt: 'The habits that help young athletes grow every day.', body: 'At Inspire Stars, progress is measured in more than goals. It is found in the courage to try again, support a teammate, and stay curious.', image: 'images/gal-20.jpg' },
+      { id: 'seed-2', title: 'A new season of possibilities', category: 'Academy news', date: '2026-08-09', status: 'published', excerpt: 'Training, community and international pathways for the season ahead.', body: 'Our coaches are preparing a focused, joyful season for every young athlete in the academy.', image: 'images/gal-06.jpg' },
+      { id: 'seed-3', title: 'Saturday at Amahoro Stadium', category: 'Community', date: '2026-09-01', status: 'draft', excerpt: 'Notes from a morning filled with energy and teamwork.', body: 'The energy was high from the first whistle. More to come from Saturday at the stadium.', image: 'images/gal-14.jpg' }
+    ];
+    const storeKey = 'isa-editorial-stories-v1';
+    let stories = JSON.parse(localStorage.getItem(storeKey) || 'null') || seed;
+    let currentImage = '';
+    const $ = id => document.getElementById(id);
+    const today = () => new Date().toISOString().slice(0, 10);
+    function saveStore() { localStorage.setItem(storeKey, JSON.stringify(stories)); }
+    function formatDate(value) { return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(value + 'T12:00:00')); }
+    function toast(message) { const el = $('toast'); el.textContent = message; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2400); }
+    function render() {
+      const query = $('search').value.toLowerCase(); const filter = $('filter').value;
+      const visible = stories.filter(s => (!query || (s.title + s.category + s.excerpt).toLowerCase().includes(query)) && (filter === 'all' || s.status === filter));
+      $('post-list').innerHTML = visible.length ? visible.map(s => `<article class="post ${s.id === $('post-id').value ? 'selected' : ''}"><img class="post-image" src="${s.image || 'images/hero.jpg'}" alt=""><div><div class="post-title">${escapeHtml(s.title || 'Untitled story')}</div><div class="post-meta">${escapeHtml(s.category)} · ${formatDate(s.date)} · <span class="status ${s.status}">${s.status === 'published' ? 'Published' : 'Draft'}</span></div></div><div class="post-actions"><button class="icon-button edit-action" title="Edit story" data-edit="${s.id}" type="button">✎</button><button class="icon-button" title="Delete story" data-delete="${s.id}" type="button">×</button></div></article>`).join('') : '<div class="empty">No stories match your search.</div>';
+      $('story-count').textContent = `${visible.length} of ${stories.length}`;
+      const published = stories.filter(s => s.status === 'published'); $('published-count').textContent = published.length; $('draft-count').textContent = stories.filter(s => s.status === 'draft').length; $('month-count').textContent = published.filter(s => s.date.slice(0, 7) === today().slice(0, 7)).length; $('media-count').textContent = stories.filter(s => s.image).length;
+    }
+    function escapeHtml(text) { return String(text).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[c])); }
+    function resetForm() { $('editor-form').reset(); $('post-id').value = ''; $('date').value = today(); currentImage = ''; $('media-drop').classList.remove('has-image'); $('media-drop').innerHTML = '<div class="drop-copy"><strong>Choose a cover image</strong>JPG, PNG or WEBP · shown on story cards<br><button class="upload-button" id="upload-trigger" type="button">Browse files</button></div><input id="image-input" type="file" accept="image/jpeg,image/png,image/webp">'; bindUpload(); $('editor-heading').textContent = 'Create a story'; $('autosave').textContent = 'New draft'; render(); }
+    function editStory(id) { const s = stories.find(item => item.id === id); if (!s) return; $('post-id').value = s.id; $('title').value = s.title; $('slug').value = s.slug || slugify(s.title); $('category').value = s.category; $('date').value = s.date; $('excerpt').value = s.excerpt; $('body').value = s.body; $('featured').checked = Boolean(s.featured); currentImage = s.image; showImage(s.image); $('editor-heading').textContent = 'Edit story'; $('autosave').textContent = s.status === 'published' ? 'Published story' : 'Draft · saved'; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function showImage(src) { $('media-drop').classList.add('has-image'); $('media-drop').innerHTML = `<img src="${src}" alt="Selected cover image"><button class="upload-button" id="upload-trigger" type="button" style="position:absolute;bottom:10px;right:10px">Change image</button><input id="image-input" type="file" accept="image/jpeg,image/png,image/webp">`; bindUpload(); }
+    function bindUpload() { $('upload-trigger').addEventListener('click', () => $('image-input').click()); $('image-input').addEventListener('change', event => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = e => { currentImage = e.target.result; showImage(currentImage); }; reader.readAsDataURL(file); }); }
+    function slugify(value) { return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+    $('title').addEventListener('input', () => { if (!$('post-id').value || !$('slug').value) $('slug').value = slugify($('title').value); });
+    function collect(status) { return { id: $('post-id').value || 'story-' + Date.now(), title: $('title').value.trim(), slug: $('slug').value.trim() || slugify($('title').value), category: $('category').value, date: $('date').value || today(), status, featured: $('featured').checked, excerpt: $('excerpt').value.trim(), body: $('body').value.trim(), image: currentImage || 'images/hero.jpg' }; }
+    $('editor-form').addEventListener('submit', e => { e.preventDefault(); if (!$('title').value.trim()) return; upsert(collect('published')); toast('Story published to your editorial list'); });
+    $('save-draft').addEventListener('click', () => { if (!$('title').value.trim()) { $('title').focus(); return; } upsert(collect('draft')); toast('Draft saved'); });
+    function upsert(story) { const index = stories.findIndex(s => s.id === story.id); if (index > -1) stories[index] = story; else stories.unshift(story); saveStore(); editStory(story.id); }
+    $('new-post').addEventListener('click', resetForm); $('clear-post').addEventListener('click', resetForm); $('search').addEventListener('input', render); $('filter').addEventListener('change', render);
+    $('post-list').addEventListener('click', e => { const edit = e.target.closest('[data-edit]'); const del = e.target.closest('[data-delete]'); if (edit) editStory(edit.dataset.edit); if (del && confirm('Delete this story?')) { stories = stories.filter(s => s.id !== del.dataset.delete); saveStore(); render(); toast('Story deleted'); } });
+    document.querySelectorAll('[data-format]').forEach(button => button.addEventListener('click', () => { const area = $('body'); const wrap = { bold: ['**', '**'], italic: ['_', '_'], heading: ['## ', ''], list: ['- ', ''] }[button.dataset.format]; const start = area.selectionStart, end = area.selectionEnd; area.setRangeText(wrap[0] + area.value.slice(start, end) + wrap[1], start, end + wrap[0].length + wrap[1].length, 'select'); area.focus(); }));
+    $('body').addEventListener('input', () => { const count = $('body').value.trim() ? $('body').value.trim().split(/\s+/).length : 0; $('word-count').textContent = `${count} words`; });
+    document.querySelectorAll('[data-coming]').forEach(button => button.addEventListener('click', () => toast(`${button.dataset.coming} is coming soon`)));
+    resetForm();
+  </script>
+</body>
+</html>

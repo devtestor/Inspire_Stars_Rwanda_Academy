@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found | Inspire Stars Academy Rwanda</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#1B2D52" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:      #1B2D52;
+      --navy-soft: #2f4f8a;
+      --gold:      #F6A623;
+      --cream:     #FBF6EE;
+      --text-body: #443F38;
+      --text-muted:#6E655B;
+      --font-head: 'Sora', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      background: var(--cream);
+      font-family: var(--font-body);
+      color: var(--text-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 520px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 28px;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .code {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover { background: #E08A00; transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+
+    .contact {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact a { color: var(--navy-soft); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <img class="logo" src="/images/logo-mark.png" alt="Inspire Stars Academy Rwanda" width="84" height="84" />
+
+    <p class="code">Error 404</p>
+    <h1>This page doesn't exist</h1>
+    <p>
+      The link may be out of date, or the address may have been mistyped.
+      Everything about the academy lives on our home page.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="/">Back to home</a>
+      <a class="btn btn-outline" href="/#enroll">Enroll your child</a>
+    </div>
+
+    <p class="contact">
+      Need help? Call or WhatsApp
+      <a href="tel:+250789921727">+250&nbsp;789&nbsp;921&nbsp;727</a>
+    </p>
+  </main>
+
+</body>
+</html>

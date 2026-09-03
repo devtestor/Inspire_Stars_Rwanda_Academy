@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Inspire Stars Academy Rwanda — sitemap
+  The site is a single page, so there is one URL. The <loc> below must
+  match the live domain: if you move the site, change it here and in
+  robots.txt, then re-submit in Google Search Console.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.inspirestars.rw/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

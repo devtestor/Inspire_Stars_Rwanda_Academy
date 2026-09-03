@@ -1,0 +1,8 @@
+# Inspire Stars Academy Rwanda
+# Everything on this site is public and should be indexed.
+
+User-agent: *
+Allow: /
+
+# ► When the final domain is live, change the line below to match it.
+Sitemap: https://www.inspirestars.rw/sitemap.xml

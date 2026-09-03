@@ -1,0 +1,57 @@
+# Apache configuration — for cPanel / shared hosting.
+#
+# Netlify, Vercel, Cloudflare Pages and GitHub Pages ignore this file;
+# they use _headers / netlify.toml instead. Leaving it in place is safe
+# on every host.
+
+# ---- Custom error page ----
+ErrorDocument 404 /404.html
+
+# ---- Default document ----
+DirectoryIndex index.html
+
+# ---- Security headers ----
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
+# ---- Compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---- Caching ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Media is versioned by filename, so cache it for a year.
+  ExpiresByType image/jpeg      "access plus 1 year"
+  ExpiresByType image/png       "access plus 1 year"
+  ExpiresByType image/webp      "access plus 1 year"
+  ExpiresByType image/svg+xml   "access plus 1 year"
+  ExpiresByType video/mp4       "access plus 1 year"
+  ExpiresByType image/x-icon    "access plus 1 week"
+
+  # Never cache the HTML, or content edits won't reach visitors.
+  ExpiresByType text/html       "access plus 0 seconds"
+</IfModule>
+
+# ---- Correct MIME types (some shared hosts get these wrong) ----
+<IfModule mod_mime.c>
+  AddType image/x-icon              .ico
+  AddType application/manifest+json .webmanifest
+  AddType video/mp4                 .mp4
+</IfModule>
+
+# ---- Force HTTPS ----
+# Uncomment the three lines below once an SSL certificate is installed.
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
