@@ -12,13 +12,17 @@ create table if not exists public.stories (
   excerpt text not null default '',
   body text not null default '',
   image_url text,
-  status text not null default 'draft' check (status in ('draft', 'published')),
+  status text not null default 'draft' check (status in ('draft', 'scheduled', 'published')),
   featured boolean not null default false,
   publish_date date not null default current_date,
   author_id uuid not null references auth.users(id) default auth.uid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Allows existing projects to adopt scheduled publishing safely.
+alter table public.stories drop constraint if exists stories_status_check;
+alter table public.stories add constraint stories_status_check check (status in ('draft', 'scheduled', 'published'));
 
 create index if not exists stories_status_date_idx on public.stories(status, publish_date desc);
 create index if not exists stories_category_idx on public.stories(category);

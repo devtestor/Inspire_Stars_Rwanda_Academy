@@ -14,3 +14,5 @@ on conflict do nothing;
 For the deployed site, add `https://inspire-stars-academy-website.vercel.app/admin` to Supabase Auth URL Configuration.
 
 The publishable key in `supabase-config.js` is intended for browser use. Never put a secret or service-role key in this repository.
+
+The schema supports `draft`, `scheduled`, and `published` stories. Public pages only query `published` records, so a scheduled story stays private until its status is changed by the admin workflow.
