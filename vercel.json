@@ -3,5 +3,8 @@
     { "source": "/admin", "destination": "/dashboard.html" },
     { "source": "/stories", "destination": "/stories.html" },
     { "source": "/story", "destination": "/story.html" }
+  ],
+  "crons": [
+    { "path": "/api/publish-scheduled", "schedule": "*/15 * * * *" }
   ]
 }

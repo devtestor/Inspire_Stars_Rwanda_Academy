@@ -23,9 +23,21 @@ create table if not exists public.stories (
 -- Allows existing projects to adopt scheduled publishing safely.
 alter table public.stories drop constraint if exists stories_status_check;
 alter table public.stories add constraint stories_status_check check (status in ('draft', 'scheduled', 'published'));
+alter table public.stories add column if not exists seo_title text;
+alter table public.stories add column if not exists seo_description text;
+alter table public.stories add column if not exists social_image_url text;
 
 create index if not exists stories_status_date_idx on public.stories(status, publish_date desc);
 create index if not exists stories_category_idx on public.stories(category);
+
+create or replace function public.set_story_updated_at() returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+drop trigger if exists stories_updated_at on public.stories;
+create trigger stories_updated_at before update on public.stories for each row execute function public.set_story_updated_at();
 
 create or replace function public.is_admin() returns boolean language sql stable security definer set search_path = public as $$
   select exists (select 1 from public.admin_users where user_id = auth.uid());
