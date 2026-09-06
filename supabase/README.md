@@ -19,7 +19,7 @@ The schema supports `draft`, `scheduled`, and `published` stories. Public pages 
 
 ## Scheduled publishing
 
-The Vercel cron endpoint runs every 15 minutes and promotes scheduled stories whose `publish_date` has arrived. Add these Vercel environment variables before enabling it:
+The Vercel Hobby cron endpoint runs daily at midnight and promotes scheduled stories whose `publish_date` has arrived. A Vercel Pro plan or Supabase Scheduler is needed for more frequent publishing. Add these Vercel environment variables before enabling it:
 
 ```text
 SUPABASE_URL=https://your-project.supabase.co

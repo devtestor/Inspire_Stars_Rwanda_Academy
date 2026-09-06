@@ -5,6 +5,6 @@
     { "source": "/story", "destination": "/story.html" }
   ],
   "crons": [
-    { "path": "/api/publish-scheduled", "schedule": "*/15 * * * *" }
+    { "path": "/api/publish-scheduled", "schedule": "0 0 * * *" }
   ]
 }
