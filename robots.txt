@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # ► When the final domain is live, change the line below to match it.
-Sitemap: https://inspire-stars-academy-website.vercel.app/sitemap.xml
+Sitemap: https://www.inspirestarsacademy.com/sitemap.xml

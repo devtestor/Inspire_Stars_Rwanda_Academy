@@ -11,7 +11,7 @@ select id from auth.users where email = 'your-admin-email@example.com'
 on conflict do nothing;
 ```
 
-For the deployed site, add `https://inspire-stars-academy-website.vercel.app/admin` to Supabase Auth URL Configuration.
+For the deployed site, add `https://www.inspirestarsacademy.com/admin` to Supabase Auth URL Configuration.
 
 The publishable key in `supabase-config.js` is intended for browser use. Never put a secret or service-role key in this repository.
 
