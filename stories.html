@@ -3,6 +3,24 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stories | Inspire Stars Academy Rwanda</title>
+  <meta name="description" content="Stories from Inspire Stars Academy Rwanda: training, community, youth sports development and opportunities for young athletes in Kigali." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.inspirestarsacademy.com/stories" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Stories | Inspire Stars Academy Rwanda" />
+  <meta property="og:description" content="Training days, community moments and the people helping young athletes find their next opportunity." />
+  <meta property="og:url" content="https://www.inspirestarsacademy.com/stories" />
+  <meta property="og:image" content="https://www.inspirestarsacademy.com/images/hero.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Stories | Inspire Stars Academy Rwanda",
+    "description": "Stories from Inspire Stars Academy Rwanda about training, community and youth sports development.",
+    "url": "https://www.inspirestarsacademy.com/stories",
+    "isPartOf": { "@type": "WebSite", "name": "Inspire Stars Academy Rwanda", "url": "https://www.inspirestarsacademy.com/" }
+  }
+  </script>
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -22,4 +40,4 @@
   </script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>(async()=>{try{const db=supabase.createClient(ISA_SUPABASE.url,ISA_SUPABASE.publishableKey);const r=await db.from('stories').select('title,slug,category,publish_date,excerpt,image_url').eq('status','published').order('featured',{ascending:false}).order('publish_date',{ascending:false});if(r.error||!r.data)return;document.getElementById('stories').innerHTML=r.data.length?r.data.map(s=>`<article class="story"><img src="${s.image_url||'images/hero.jpg'}" alt=""><div class="story-body"><span class="category">${s.category}</span><h2>${s.title}</h2><p>${s.excerpt||''}</p><div class="date">${formatDate(s.publish_date)}</div><a class="back" href="story.html?id=${encodeURIComponent(s.slug)}">Read story ↗</a></div></article>`).join(''):'<div class="empty">New stories are on their way.</div>'}catch(e){console.warn('Live stories unavailable',e)}})();</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>(async()=>{try{const db=supabase.createClient(ISA_SUPABASE.url,ISA_SUPABASE.publishableKey);const r=await db.from('stories').select('title,slug,category,publish_date,excerpt,image_url').eq('status','published').order('featured',{ascending:false}).order('publish_date',{ascending:false});if(r.error||!r.data)return;document.getElementById('stories').innerHTML=r.data.length?r.data.map(s=>`<article class="story"><img src="${s.image_url||'images/hero.jpg'}" alt=""><div class="story-body"><span class="category">${s.category}</span><h2>${s.title}</h2><p>${s.excerpt||''}</p><div class="date">${formatDate(s.publish_date)}</div><a class="back" href="/story?id=${encodeURIComponent(s.slug)}">Read story ↗</a></div></article>`).join(''):'<div class="empty">New stories are on their way.</div>'}catch(e){console.warn('Live stories unavailable',e)}})();</script>
