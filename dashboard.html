@@ -81,9 +81,17 @@
       }
       const payload = { title, slug: slug(title), category: $('category').value, excerpt: $('excerpt').value.trim(), body: $('body').value.trim(), image_url: urls[0] || $('image-url').value || null, gallery_urls: urls, featured: $('featured').checked, status: $('save-status').value, publish_date: $('publish-date').value || today(), author_id: user.id };
       const id = $('story-id').value;
-      const result = id ? await db.from('stories').update(payload).eq('id', id) : await db.from('stories').insert(payload);
+      let result = id ? await db.from('stories').update(payload).eq('id', id) : await db.from('stories').insert(payload);
+      let galleryMigrationMissing = false;
+      // Older projects may not have run the gallery migration yet. Keep basic publishing usable while showing the migration error clearly.
+      if (result.error && /gallery_urls|schema cache/i.test(result.error.message || '')) {
+        const legacyPayload = { ...payload };
+        delete legacyPayload.gallery_urls;
+        result = id ? await db.from('stories').update(legacyPayload).eq('id', id) : await db.from('stories').insert(legacyPayload);
+        if (!result.error) galleryMigrationMissing = true;
+      }
       if (result.error) { message('form-message', result.error.message); return; }
-      message('form-message', payload.status === 'published' ? 'Story published.' : payload.status === 'scheduled' ? 'Story scheduled.' : 'Draft saved.');
+      message('form-message', galleryMigrationMissing ? 'Story saved. Run the gallery migration to save additional images.' : payload.status === 'published' ? 'Story published.' : payload.status === 'scheduled' ? 'Story scheduled.' : 'Draft saved.');
       await load();
     }
     $('story-form').onsubmit = event => { event.preventDefault(); saveWithGallery(); };
