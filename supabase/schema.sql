@@ -12,6 +12,7 @@ create table if not exists public.stories (
   excerpt text not null default '',
   body text not null default '',
   image_url text,
+  gallery_urls jsonb not null default '[]'::jsonb,
   status text not null default 'draft' check (status in ('draft', 'scheduled', 'published')),
   featured boolean not null default false,
   publish_date date not null default current_date,
@@ -26,6 +27,7 @@ alter table public.stories add constraint stories_status_check check (status in 
 alter table public.stories add column if not exists seo_title text;
 alter table public.stories add column if not exists seo_description text;
 alter table public.stories add column if not exists social_image_url text;
+alter table public.stories add column if not exists gallery_urls jsonb not null default '[]'::jsonb;
 
 create index if not exists stories_status_date_idx on public.stories(status, publish_date desc);
 create index if not exists stories_category_idx on public.stories(category);
