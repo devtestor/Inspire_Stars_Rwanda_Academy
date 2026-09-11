@@ -19,3 +19,22 @@
     });
   })();
 </script>
+<script>
+  (() => {
+    const fallback = {
+      'building-confidence-beyond-the-pitch': { title: 'Building confidence beyond the pitch', category: 'Player spotlight', date: '2026-08-22', excerpt: 'The habits that help young athletes grow every day.', image: 'images/gal-20.jpg', body: 'Every training session is an opportunity to grow in confidence, discipline and teamwork.\n\nAt Inspire Stars Academy, progress is measured beyond the final score.' },
+      'a-new-season-of-possibilities': { title: 'A new season of possibilities', category: 'Academy news', date: '2026-08-09', excerpt: 'Training, community and international pathways for the season ahead.', image: 'images/gal-06.jpg', body: 'A new season brings fresh goals, new friendships and more opportunities for young athletes to develop.' }
+    };
+    const key = new URLSearchParams(location.search).get('id');
+    if (!key || !fallback[key] || typeof supabase === 'undefined' || typeof ISA_SUPABASE === 'undefined') return;
+    const client = supabase.createClient(ISA_SUPABASE.url, ISA_SUPABASE.publishableKey);
+    client.from('stories').select('id').eq('slug', key).eq('status', 'published').maybeSingle().then(({ data }) => {
+      if (data) return;
+      const s = fallback[key];
+      const date = value => new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(value + 'T12:00:00'));
+      const body = text => text.split(/\n\n+/).map(part => `<p>${part}</p>`).join('');
+      document.title = `${s.title} | Inspire Stars Academy Rwanda`;
+      document.getElementById('article').innerHTML = `<article class="article"><span class="category">${s.category}</span><h1>${s.title}</h1><p class="dek">${s.excerpt}</p><div class="date">Published ${date(s.date)}</div><img class="hero" src="${s.image}" alt="${s.title}"><div class="body">${body(s.body)}</div></article>`;
+    });
+  })();
+</script>
